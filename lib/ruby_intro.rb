@@ -13,7 +13,7 @@ def sum arr
       total = total + element
     end
     return total
-  end
+end
 
 def max_2_sum arr
   len = arr.length
@@ -71,5 +71,19 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  
+  attr_accessor :isbn, :price
+  
+  def initialize(isbn, price)
+    if isbn == "" or price <= 0
+      raise ArgumentError.new
+    end
+    @isbn = isbn
+    @price = price
+  end
+  
+  def price_as_string
+    "$%0.2f" % @price
+  end
+  
 end
