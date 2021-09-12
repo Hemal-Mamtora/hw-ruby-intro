@@ -52,15 +52,20 @@ end
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, #{name}"
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  consonant_regex = /^[bcdfghjklmnpqrstvwxys]/i
+  return consonant_regex.match(s)
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  if /^[01]+$/.match(s) # one or more 0 or 1 means binary
+    return /(00$)|(^0*$)/.match(s) # ending with 00, means multiple of 4
+  end
+  return false
+
 end
 
 # Part 3
