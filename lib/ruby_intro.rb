@@ -1,17 +1,52 @@
+require 'set'
 # When done, submit this entire file to the autograder.
 
 # Part 1
 
+# constants
+NEGATIVE_INFINITY = -1/0.0 
+# note, if we put it inside a function, it leads to error: dynamic constant assignment NEGATIVE_INFINITY = -1/0.0
+
 def sum arr
-  # YOUR CODE HERE
-end
+    total = 0
+    for element in arr do
+      total = total + element
+    end
+    return total
+  end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  len = arr.length
+  
+  if len < 2
+    return sum arr
+  end
+  
+  largest = NEGATIVE_INFINITY
+  second_largest = NEGATIVE_INFINITY
+  
+  for element in arr
+    if element >= second_largest
+      second_largest = element
+      if second_largest >= largest # swap
+        temp = largest
+        largest = second_largest
+        second_largest = temp
+      end
+    end
+  end
+  return second_largest + largest
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+    for number, index in arr.each_with_index
+        complement = n - number
+        check_array = arr[0,index].concat(arr[index+1..-1]) # array without the current element
+        if check_array.include?(complement)
+            return true
+        end
+    end
+    return false
 end
 
 # Part 2
